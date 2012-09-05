@@ -1,0 +1,65 @@
+#searchResult
+			{
+				padding:0px; 		
+			}
+			
+#searchResult th
+			{
+				height:30px;
+				margin:0px;
+				padding:3px 10px;
+				background:url(/demos/images/bg_table_header.png) repeat-x;
+				color:#FFF;
+				font-size:10px;
+				font-weight:bold;
+				text-align: left;
+				
+			}
+#searchResult a
+			{
+				font-size:10px;
+				text-align:left;
+				text-decoration:none;
+				color:#FFF;
+				text-transform:capitalize;
+				
+			}
+#searchResult td
+			{
+				margin:0px;
+				padding:3px 15px;
+				font-size:11px;
+				text-align:left;
+				border-right:1px solid #1c1c1c;
+				border-left:1px solid #484848;
+				color: #fff;
+				
+			}
+#searchResult .trCell1
+			{
+				background:#313131;
+			}
+#searchResult .trCell2
+			{
+				background:#666666;
+			}
+#searchResult .trCell3
+			{
+				background:#2C2C2C;
+			}
+#searchResult td
+			{
+				cursor:pointer;
+				height:33px;
+			}
+#searchResult tr:hover {background: #CCC;}
+
+
+
+
+
+
+
+
+
+

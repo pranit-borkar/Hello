@@ -1,0 +1,90 @@
+<script src="jquery.js"></script>
+<script src="jquery.cookie.js"></script>
+<script src="jquery.jsoncookie.js"></script>
+
+<script>
+
+    var jsonOptions= '{"1":"First","2":"Second","3":"Third","4":"Fourth","5":"Five"}';
+    /* Cookie */
+    // It is set cookie time for 1 minute
+    var date = new Date();
+    date.setTime(date.getTime() + (5 * 60 * 1000));
+
+    // It is used to set the cookie
+    $.cookie('myCookie2', jsonOptions, {expires: date});
+
+    // Set multiple cookies
+    //$.cookie({ 'cookie11':'value1', 'cookie22':'value2' });
+
+    // It is used to delete the cookie
+   // $.cookie('myCookie2', null);
+
+    // It is used to get the cookie
+    var stored_cookie = $.cookie('myCookie2');
+
+
+    /* It is used to store Json object in cookie */
+    var name = 'latest_cookie';
+    val = jsonOptions;
+    //eval('obj = ' + val, window);
+    $.JSONCookie(name, $.parseJSON(val), {path: '/'});
+
+    /* It is used to collect store cookie */
+    var collected_cookie = JSON.stringify($.JSONCookie(name));
+    alert($.JSONCookie(name));
+</script>
+
+
+
+<script>
+
+ var obj;
+    jQuery(function ($) {
+        $('#store').click(function () {
+            var name = $('#cookieName').val(),
+            val = $('#cookieObject').val();
+
+            eval('obj = ' + val, window);
+            $.JSONCookie(name, obj, {path: '/'});
+        return false;
+    });
+
+    $('#retrieve').click(function () {
+            var name = $('#cookieName').val(),
+            o = $.JSONCookie(name);
+            $('#cookieObject').val('').val(JSON.stringify(obj));
+        return false;
+    });
+
+    $('#log').click(function () {
+        var name = $('#cookieName').val(),
+        o = $.JSONCookie(name);
+        if (window.console && console.log) {
+            console.log(o);
+        }
+        return false;
+    });
+ });
+</script>
+
+
+<form>
+        <label>
+            <span>Cookie Data</span><br>
+            <textarea cols="45" rows="5" id="cookieObject">{
+                pi:  3.14,
+                test:  'Hello World',
+                'my name': 'John Doe'
+            }
+            </textarea>
+        </label>
+        <br>
+        <label>
+            <span>Cookie Name</span><br>
+            <input type="text" value="jsoncookie" id="cookieName">
+        </label>
+        <br>
+            <button id="store">Store</button>
+            <button id="retrieve">Retrieve</button>
+            <button id="log">Retrieve object and log to console</button>
+</form>

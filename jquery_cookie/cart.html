@@ -1,0 +1,240 @@
+<script src="jquery.js"></script>
+<script src="jquery.cookie.js"></script>
+<script src="jquery.jsoncookie.js"></script>
+
+
+<script>
+
+    /* Cookie */
+    // It is set cookie time for 1 minute
+    var date = new Date();
+    date.setTime(date.getTime() + (1 * 60 * 1000));
+
+    // It is used to set the cookie
+    $.cookie('myCookie2', 'myValue2', {expires: date});
+
+    // Set multiple cookies
+    $.cookie({ 'cookie11':'value1', 'cookie22':'value2' });
+
+    // It is used to delete the cookie
+    $.cookie('myCookie2', null);
+
+    // It is used to get the cookie
+    var stored_cookie = $.cookie('myCookie2');
+
+
+
+
+
+    /* It is used to check whether it is exist already or not
+       If it is already found then it is overwrite existing value,
+       Otherwise it will add new one
+       e.g. {"5":"Five"}
+    */
+    function update_json_object(cookie_name,json_string)
+    {
+        var new_key = '';
+        var new_value = '';
+        var new_record = $.parseJSON(json_string);
+        for(array_key in new_record)
+        {
+            new_key = array_key;
+            new_value = new_record[array_key];
+        }
+        var latest_cookie = $.JSONCookie(cookie_name);
+
+        var found = '';
+        $.each(latest_cookie, function(i,j){
+            if(i==new_key)
+            {
+                latest_cookie[i] = new_value;
+                found = 1;
+            }
+        });
+        if(found!=1)
+        {
+            latest_cookie[new_key] = new_value;
+        }
+        $.JSONCookie(cookie_name, latest_cookie, {path: '/'});
+    }
+
+
+    /* It is used to remove one row from json object,
+       If both key and value match
+        e.g. {"5":"Five"}
+    */
+    function remove_json_object_with_key_value(cookie_name,json_string)
+    {
+        var new_key = '';
+        var new_value = '';
+        var new_record = $.parseJSON(json_string);
+        for(array_key in new_record)
+        {
+            new_key = array_key;
+            new_value = new_record[array_key];
+        }
+        var sorted_cookie = $.parseJSON('{}');
+        var latest_cookie = $.JSONCookie(cookie_name);
+        $.each(latest_cookie, function(i,j){
+            if((i==new_key) && (j==new_value)){}
+            else
+               sorted_cookie[i] = j;
+        });
+        $.JSONCookie(cookie_name, sorted_cookie, {path: '/'});
+    }
+
+
+    /* It is used to remove one row from json object,
+       If key match
+        e.g. 5
+    */
+    function remove_json_object_with_key(cookie_name,json_string)
+    {
+        var new_key = json_string;
+        var sorted_cookie = $.parseJSON('{}');
+        var latest_cookie = $.JSONCookie(cookie_name);
+        $.each(latest_cookie, function(i,j){
+            if(i==new_key){}
+            else
+               sorted_cookie[i] = j;
+        });
+        $.JSONCookie(cookie_name, sorted_cookie, {path: '/'});
+    }
+
+
+    /* It is used to remove all rows at a time
+    */
+    function remove_all_json_object(cookie_name)
+    {
+        $.JSONCookie(cookie_name,$.parseJSON('{}'),{path:'/'});
+    }
+
+
+    var add_new = '3';
+    //update_json_object('latest_cookie',add_new);
+    //remove_json_object_with_key_value('latest_cookie',add_new);
+    //remove_json_object_with_key('latest_cookie',add_new);
+    //remove_all_json_object('latest_cookie');
+    //alert(JSON.stringify($.JSONCookie('latest_cookie')));
+
+
+    var item = {};
+    item.itemID = "1";
+    item.itemName = "abc";
+    item.item_qty = "2";
+    item.total_price = "122";
+    update_json_object('cart_cookie',item);
+
+
+    function update_json_object(cookie_name,item)
+    {
+        var categories = [];
+        var previous_item = {};
+        var latest_cookie = $.JSONCookie(cookie_name);
+
+        /*$.each(latest_cookie, function(i,j){
+           previous_item.i = j;
+        });
+        categories.push(previous_item);*/
+        $.each(item, function(i,j){
+           item.i = j;
+        });
+        categories.push(item);
+
+        var string = JSON.stringify(categories);
+        var object = $.parseJSON(string);
+//alert(object);
+        $.JSONCookie(cookie_name, object, {path: '/'});
+
+    }
+
+
+
+    /* Json */
+    // Collected multiple options in json
+    var jsonOptions= {1:"First",2:"Second",3:"Third"};
+
+    for(index in jsonOptions)
+    {
+      //alert(jsonOptions[index]);
+    }
+
+
+    // Method 1
+   /* $(document).ready(function(){
+        $("select#category").change(function(){
+            var category = $("#category").val();
+            if(category==1)
+                var SubCatJson = {1:"First Category1",2:"First Category2"};
+            else
+                var SubCatJson = {3:"Second Category1",4:"Second Category2"};
+
+            $("select#sub_category option").remove();
+            $.each(SubCatJson, function(i,j){
+                var row = "<option value='"+i+"'>"+j+"</option>";
+                $(row).appendTo("select#sub_category");
+            });
+        });
+    });
+    */
+
+    // Method 2
+    $(document).ready(function(){
+        $("select#category").change(function(){
+        var url = "test.php";
+        var category = $("#category").val();
+        $.post(url,{type:category},function(data){
+                $("select#sub_category option").remove();
+
+                $.each(data, function(i,j){
+					var row = "<option value='"+j.value+"'>"+j.text+"</option>";
+                    $(row).appendTo("select#sub_category");
+                });
+            }, "json");
+        });
+
+
+
+        /*
+        extend is used to merge two or more than two objects into single one.
+        If there is found duplicate key then second key will replace to first one
+        */
+        var object1 = {
+                apple: 0,
+                banana: {weight: 52, price: 100},
+                cherry: 97
+                };
+        var object2 = {
+                banana: {weight:444, price: 200},
+                durian: 100
+                };
+
+        /* merge object2 into object1 */
+        var object = $.extend(object1, object2);
+
+
+
+
+
+        var table = {};
+        table.RestaurantTableID = 1;
+        table.RestaurantID = 2;
+        table.TableCode = 3;
+
+        /* It is used to convert table object to json format */
+        JSON.stringify(table);
+
+    });
+</script>
+
+
+
+<select name="category" id="category">
+    <option value="">-- Select Value --</option>
+    <option value="1">Subject1</option>
+    <option value="2">Subject2</option>
+</select>
+
+<select name="sub_category" id="sub_category">
+    <option value="">-- Select First Value --</option>
+</select>
