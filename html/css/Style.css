@@ -1,0 +1,115 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+	background: transparent;
+	outline-color:invert;
+	outline-style:none;
+	outline-width:0pt;
+
+}
+body {
+	line-height: 1;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	clear: both;
+}
+ol, ul {
+	list-style:none;
+}
+blockquote {
+	quotes: none;
+}
+blockquote:before, blockquote:after {
+	content: '';
+	content: none;
+}
+del {
+	text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a img { border: none; }
+
+html * {
+	outline-color:#080808 !important;
+	outline-style:none !important;
+	outline-width:medium !important;
+}
+/* Main global 'theme' and typographic styles  */
+body {
+	font:12px Arial, Verdana, Tahoma;
+	margin:0 auto;
+	padding:0;
+	color:#888;
+	height:100%;
+	line-height:28px;
+	background:#080808;
+}
+#mainbody .center {
+	overflow:hidden;
+}
+a:link, a:active {color:#d7d7d7; text-decoration:none;}
+a:visited {color:#1897e5; text-decoration:none;}
+a:hover {color:#cc0000; text-decoration:none;}
+/* Text elements */
+h1, h2, h3, h4, h5, h6 {margin-bottom:15px;	font-family: BebasNeueRegular,Arial, Tahoma;	font-weight:normal; color:#838383}
+h1 {font-size:20px; line-height:24px; text-transform:uppercase;}
+h2 {font-size:18px; line-height:20px;  text-transform:uppercase;}
+h3 {font-size:16px; line-height:18px;}
+h4 {font-size:14px; line-height:15px;}
+h5 {font-size:12px; line-height:15px;}
+h6 {font-size:10px; line-height:15px;}
+h1, h2, h3{color:#618d02}
+p {	margin-bottom: 18px; line-height: 22px;}
+strong {	font-weight: bold;}
+.clr{display:block;clear:both;font-size:0px;height:1px;line-height:1px;margin-bottom:-1px}
+
+/* The main theme structure */
+#wrapper{ background:#080808;min-height:80px; margin-top:20px; width:100%;}
+#header { width:100%; padding:39px 0 0 0; height:117px;}
+#header .mainimage{ height:118px; margin:0px; width:114px; float:left;}
+#header .title{ padding:21px 37px 0; margin:0;	width:885px; height:51px; float:right;}
+#collage { width:1060px; height:418px; padding-left:10px;}
+#adderess{ padding:0px 70px; margin-bottom:25px;clear: both;}
+.center{width:1075px; margin:0px auto 0px auto;}
+div#wn {color:#7A7C7F;height: 435px;overflow-x: hidden; overflow-y: hidden; position: relative;width: 755px;}
+#scrollbar { float: right; width: 15px;}
+#body-content{float:right;padding:0px;width:770px;overflow:hidden;position:relative; margin-right:55px;}
+
+/*NavBar*/
+#Navbar { margin: 0; padding:35px 150px ; outline: none; height: 40px; width:769px; z-index: 11;}
+#Navbar ul li{float:left; list-style-type:none}
+#Navbar ul li a#meny{background:url(../images/menu.png) 0px 0px; width:186px; height:40px; text-indent:-9999px; float:left}
+#Navbar ul li a#bordbestilling{background:url(../images/menu.png) -187px 0px; width:363px; height:40px; text-indent:-9999px; float:left}
+#Navbar ul li a#takeout{background:url(../images/menu.png) -550px 0px; width:220px; height:40px; text-indent:-9999px; float:left}
+/* sidebar Areas */
+.sidebarLink {	padding:0px 0px 0px 13px;	position:relative;	width:230px;	float:left;}
+.sidebarLink ul {	float:left;	margin:0px;	padding:0px;}
+.sidebarLink li {	display: block;	padding-top: 0px;	padding-right: 0px;	padding-bottom: 0px;	padding-left:9px;	list-style:none;}
+.sidebarLink a {	color:#d7d7d7; margin:0;	padding:0px;	text-decoration:none !important;}
+.sidebarLink a:hover {	color:#cc0000;}
+.sidebarLink .current {	color:#cc0000;   font-weight: bold;}
+
+/* product-listing */
+.withleftnav{float:right;padding:0px;width:810px;overflow:hidden;position:relative;}
+#productlisting-page div.item-listing .grid .prod{margin:0 15px 10px 0;width:130px}
+div.item-listing div.content-wrapper{overflow:hidden;width:709px;clear:both}div.item-listing .content{width:725px;border:0;list-style-type:none}
+div.item-listing .list .prod{background:#080808;padding:0 0 14px 0;margin:0 0 14px 0;border-bottom:1px dashed #ccc}
+div.item-listing .list .prod div.im{margin:0 20px 0 0;height:166px;width:160px;padding:3px;position:relative;float:left}
+div.item-listing .list .prod div.desc{float:left;width:500px}div.item-listing .list .prod div.desc h5{font-size:1.7em;margin:0}
+div.item-listing .list .prod div.desc h5 a{font-family:"Times New Roman",Times,serif}
+div.item-listing .list .prod div.desc p.price{font-size:1.2em;margin:0 0 0.5em 0}div.item-listing .list .prod div.desc p.price .red-price{color: #FFF;  font-size: 11px;  padding-left:5px;}div.item-listing div.window-wrapper{overflow-x:auto;overflow-y:hidden;height:400px;width:100%;position:relative}div.item-listing div.list-wrapper ul{margin:0pt 0pt 1em 1.26em}div.item-listing div.list-wrapper li{margin:0pt 0pt 0.25em}

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Rupee Manager</title>
+<link href="css/Style.css" rel="stylesheet" type="text/css" />
+<!--
+  jQuery library
+-->
+<script type="text/javascript" src="gallery/jquery-1.js"></script>
+
+<!--
+  jCarousel library
+-->
+<script type="text/javascript" src="gallery/jquery.js"></script>
+
+<!--
+  jCarousel skin stylesheet
+-->
+<link rel="stylesheet" type="text/css" href="gallery/skin.css">
+
+<script type="text/javascript">
+
+function mycarousel_itemLoadCallback(carousel, state)
+{
+    // Check if the requested items already exist
+    if (carousel.has(carousel.first, carousel.last)) {
+        return;
+    }
+
+    jQuery.get(
+        'index.php',
+        {
+            first: carousel.first,
+            last: carousel.last
+        },
+        function(xml) {
+            mycarousel_itemAddCallback(carousel, carousel.first, carousel.last, xml);
+        },
+        'xml'
+    );
+};
+
+function mycarousel_itemAddCallback(carousel, first, last, xml)
+{
+    // Set the size of the carousel
+    carousel.size(parseInt(jQuery('total', xml).text()));
+
+    jQuery('image', xml).each(function(i) {
+        carousel.add(first + i, mycarousel_getItemHTML(jQuery(this).text()));
+    });
+};
+
+/**
+ * Item html creation helper.
+ */
+function mycarousel_getItemHTML(url)
+{
+    return '<img src="' + url + '" width="85" height="85" alt="" />';
+};
+
+jQuery(document).ready(function() {
+    jQuery('#mycarousel').jcarousel({
+        // Uncomment the following option if you want items
+        // which are outside the visible range to be removed
+        // from the DOM.
+        // Useful for carousels with MANY items.
+
+        // itemVisibleOutCallback: {onAfterAnimation: function(carousel, item, i, state, evt) { carousel.remove(i); }},
+        itemLoadCallback: mycarousel_itemLoadCallback
+    });
+});
+
+</script>
+
+</head>
+
+<body>
+<div id="pagewidth" >
+	<div id="header">
+		<div class="topcurve"></div>
+	  <img src="images/logo.png" alt="Logo" />
+	  <div id="title">
+				<h1>Rupee Manager</h1>
+				<span>Your Personal Finance Assistant</span>
+	  </div>
+	</div><!--HEADER END-->
+
+  <div id="wrapper" class="clearfix">
+		<div id="twocols"> 
+			<div id="maincol"><h1>Have you planned your finances?</h1><p>Based on research, most Indians are either unaware of ways to make the most of the money they earn, or are entirely oblivious to the fact that they need to manage finances to ensure a safe future for themselves and their family.</p>
+			<p>Click <a href="#">here</a> to about Rupee Manager Personal Information</p> 
+	</div><!--TWOCOLS END-->
+	
+	<div id="rightcol"><p align="center"><a href="#"><img src="images/register.gif" alt="register" width="209" height="54" border="0" /></a></p>
+	<p  class="center"><a href="#">Already registered?<b>Sign In</b></a></p>
+	</div><!--RIGHTCOL END-->
+	</div> <!--TWOCOLS END-->
+	
+	<div id="gallerywrap"><!--GALLERy START-->
+  <div class=" jcarousel-skin-ie7"><div style="position: relative; display: block;" id="mycarousel" 		 	class="jcarousel-container jcarousel-container-horizontal">
+    <div style="position: relative;" class="jcarousel-clip jcarousel-clip-horizontal"><ul style="overflow: hidden; position: relative; top: 0px; margin: 0px; padding: 0px; left: 0px; width: 1085px;" class="jcarousel-list jcarousel-list-horizontal"><li jcarouselindex="1" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-1 jcarousel-item-1-horizontal"><img src="gallery/199481236_dc98b5abb3_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="2" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-2 jcarousel-item-2-horizontal"><img src="gallery/199481072_b4a0d09597_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="3" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-3 jcarousel-item-3-horizontal"><img src="gallery/199481087_33ae73a8de_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="4" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-4 jcarousel-item-4-horizontal"><img src="gallery/199481108_4359e6b971_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="5" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-5 jcarousel-item-5-horizontal"><img src="gallery/199481143_3c148d9dd3_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="6" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-6 jcarousel-item-6-horizontal"><img src="gallery/199481203_ad4cdcf109_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="7" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-7 jcarousel-item-7-horizontal"><img src="gallery/199481218_264ce20da0_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="8" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-8 jcarousel-item-8-horizontal"><img src="gallery/199481255_fdfe885f87_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="9" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-9 jcarousel-item-9-horizontal"><img src="gallery/199480111_87d4cb3e38_s.jpg" alt="" width="149" height="114"></li><li jcarouselindex="10" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-10 jcarousel-item-10-horizontal"><img src="gallery/229228324_08223b70fa_s.jpg" alt="" width="149" height="114"></li>
+	
+	<li jcarouselindex="3" style="float: left; list-style: none outside none;" class="jcarousel-item jcarousel-item-horizontal jcarousel-item-3 jcarousel-item-3-horizontal"><img src="gallery/199481087_33ae73a8de_s.jpg" alt="" width="149" height="114"></li>
+
+      <!-- The content will be dynamically loaded in here -->
+    </ul></div>
+  <div disabled="true" style="display: block;" class="jcarousel-prev jcarousel-prev-horizontal jcarousel-prev-disabled jcarousel-prev-disabled-horizontal"></div>
+  <div disabled="false" style="display: block;" class="jcarousel-next jcarousel-next-horizontal"></div>
+  </div></div>
+</div>
+	<!--Gallery END-->
+
+	
+	<div id="testimonial"><!--TESTIMONIAL START-->
+		 <div class="show"><p>A call to action headline, asking people to click the button on the right to register for the next workshop on -  Jonathan Doe</p></div>
+		 <div class="right"></div>
+	</div><!--TESTIMONIAL END-->
+	
+ <div id="contactholder">
+	<div id="contactrightcol">
+  <form method="post" action="#" class="clearfix" id="contactform">
+	<div class="form-info">
+	<div class="form-row">
+	<label for="name">Full Name</label>
+	<input type="text" tabindex="1" maxlength="60" size="30" name="name" id="name">
+	</div>
+	
+	<div class="form-row">
+	<label for="email">Email Address</label>
+	<input type="text" tabindex="2" maxlength="60" size="30" name="email" id="email">
+	</div>
+	
+	<div class="form-row">
+	<label for="url">Phone Number</label>
+	<input type="text" tabindex="3" maxlength="60" size="30" name="url" id="url">
+	</div>
+	</div>
+	
+	<div class="form-row form-textarea">
+	<label for="message">Message</label>
+	<textarea tabindex="4" rows="5" cols="45" name="message" id="message"></textarea>
+		  </div>
+	
+	<div class="form-submit">
+	<input type="image" src="images/send-enquiry.gif" value="Send Now" name="submit" id="submit">
+	</div>
+	
+	</form>
+	
+	</div>
+	
+	<div id="contactlefttcol">
+	<h3>Contact us today</h3>
+	<p>Please fill out the contact form, or contact us below using the traditional methods.</p>
+		<div id="ContactForm">
+		<dl>
+			<dt><B>Address:</B></dt>
+			<dd>Address Line 1
+		Address Line 2</dd>
+		<dt><B>Phone:</B></dt>
+			<dd>+91-9888899988</dd>
+		<dt><B>Email:</B></dt>
+			<dd><a href="mailto:info@rupeemanager.com">info@rupeemanager.com</a></dd>
+			</dl>
+		</div>
+	</div>	
+	</div><!--Contactholder END-->
+	
+  </div>  
+  <!--WRAPPER END-->
+
+	
+
+  <div id="footer">
+    <div id="powered">
+	<p>Powered by <a href="#">Synsynoia</a></p>
+	 <ul class="f-links">
+      <li>Network with us:</li>
+	  <li><a href="#"><img src="images/facebook.gif" alt="facebook" border="0" /></a></li>
+	  <li><a href="#"><img src="images/twitter.gif" alt="twitter" /></a></li>
+	  <li><a href="#"><img src="images/linkin.gif" alt="linkedin" /></a></li>
+	  <li><a href="#"><img src="images/youtub.gif" alt="youtube" /></a></li>
+    </ul>
+    </div>
+	
+    <p class="copyright">&copy; 2011 RupeeManager. All rights reserved.</p>
+    <div class="bottomcurve"></div>
+  </div>
+</div>
+</body>
+</html>
